@@ -1,7 +1,10 @@
-📊 Forge_LLOYDS_BANKING_GROUP
+**📊 Forge_LLOYDS_BANKING_GROUP**
 Overview
 This project focuses on analyzing and predicting customer churn for Lloyds Banking Group using a comprehensive dataset of customer demographics, transaction history, service interactions, and online activity. The goal is to uncover behavioral patterns, identify churn risks, and prepare the data for robust machine learning models.
-🔍 Project Structure
+
+
+#**🔍 Project Structure**#
+
 Forge_LLOYDS_BANKING_GROUP/
 │
 ├── data/
@@ -55,5 +58,6 @@ Forge_LLOYDS_BANKING_GROUP/
 - Internal reports and visualizations
 - Domain knowledge from banking churn studies
 - Python libraries: Pandas, Scikit-learn, Matplotlib, Seaborn
+
 
 
