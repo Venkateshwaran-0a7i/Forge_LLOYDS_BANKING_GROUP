@@ -1,21 +1,31 @@
+📊 Forge_LLOYDS_BANKING_GROUP
 
-**📊 Forge_LLOYDS_BANKING_GROUP**
+Customer Churn Analysis & Prediction (Banking Use Case)
+
 Overview
-This project focuses on analyzing and predicting customer churn for Lloyds Banking Group using a comprehensive dataset of customer demographics, transaction history, service interactions, and online activity. The goal is to uncover behavioral patterns, identify churn risks, and prepare the data for robust machine learning models.
 
+This project analyses and predicts customer churn for Lloyds Banking Group using structured customer data spanning demographics, transactional behaviour, service interactions, and digital engagement.
 
-**🔍 Project Structure**
+The objective is not just model accuracy, but to:
 
+Identify actionable churn signals
+
+Prepare regulation-safe, explainable features
+
+Build a dataset ready for production-grade ML pipelines
+
+This work aligns with retail banking risk and retention analytics, where explainability, robustness, and business cost awareness are critical.
+
+🔍 Project Structure
 Forge_LLOYDS_BANKING_GROUP/
 │
 ├── data/
-│   ├── Customer_Churn_Data_Large.xlsx      # Raw data source (too large to process directly)
-│   ├── cleaned_customer_churn_data.csv     # Final preprocessed dataset
-│   └── cleaned_customer_churn_data.xlsx    # Excel version of cleaned dataset
+│   ├── Customer_Churn_Data_Large.xlsx
+│   ├── cleaned_customer_churn_data.csv
+│   └── cleaned_customer_churn_data.xlsx
 │
 ├── reports/
-│   ├── Customer Churn Analysis Report.docx
-│   ├── Data Cleaning and Preprocessing Report.docx
+│   ├── Data_Cleaning_and_Preprocessing_Report.docx
 │   ├── Data_Cleaning_and_Preprocessing_Report_Extended.docx
 │   └── Customer_Churn_Analysis_Report.docx
 │
@@ -25,159 +35,101 @@ Forge_LLOYDS_BANKING_GROUP/
 │   └── spend_vs_trans.png
 │
 ├── notebooks/
-│   └── churn_model_dev.ipynb               # (To be added) Model development notebook
+│   └── churn_model_dev.ipynb
 │
-└── README.md                               # Project documentation
-
-
-📈 Key Insights
-- Churn Rate: ~20.4% of customers have churned.
-- Behavioral Indicators: Lower transaction volume, reduced spend, and frequent support calls are strong churn predictors.
-- Demographics: Age shows moderate churn variability; younger customers are slightly more volatile.
-- Digital Engagement: Login frequency correlates with retention.
-🧹 Preprocessing Summary
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
-
-
-🧠 Model Readiness
-- Fully numerical and standardized dataset
-- Suitable for tree-based and distance-based algorithms
-- Class imbalance handled via SMOTE or class weights
-- No data leakage detected
-🚀 Next Steps
-- Feature selection and importance ranking
-- Model training (Logistic Regression, Random Forest, XGBoost)
-- Evaluation using precision, recall, F1-score, and ROC-AUC
-- Deployment-ready pipeline (optional)
-📎 References
-- Internal reports and visualizations
-- Domain knowledge from banking churn studies
-- Python libraries: Pandas, Scikit-learn, Matplotlib, Seaborn
-
-
-
-
-
-=======
-📊 Forge\_LLOYDS\_BANKING\_GROUP
-
-Overview
-
-This project focuses on analyzing and predicting customer churn for Lloyds Banking Group using a comprehensive dataset of customer demographics, transaction history, service interactions, and online activity. The goal is to uncover behavioral patterns, identify churn risks, and prepare the data for robust machine learning models.
-
-🔍 Project Structure
-
-Forge\_LLOYDS\_BANKING\_GROUP/
-
-│
-
-├── data/
-
-│   ├── Customer\_Churn\_Data\_Large.xlsx      # Raw data source (too large to process directly)
-
-│   ├── cleaned\_customer\_churn\_data.csv     # Final preprocessed dataset
-
-│   └── cleaned\_customer\_churn\_data.xlsx    # Excel version of cleaned dataset
-
-│
-
-├── reports/
-
-│   ├── Customer Churn Analysis Report.docx
-
-│   ├── Data Cleaning and Preprocessing Report.docx
-
-│   ├── Data\_Cleaning\_and\_Preprocessing\_Report\_Extended.docx
-
-│   └── Customer\_Churn\_Analysis\_Report.docx
-
-│
-
-├── visuals/
-
-│   ├── churn\_distribution.png
-
-│   ├── age\_dist\_churn.png
-
-│   └── spend\_vs\_trans.png
-
-│
-
-├── notebooks/
-
-│   └── churn\_model\_dev.ipynb               # (To be added) Model development notebook
-
-│
-
-└── README.md                               # Project documentation
-
-
-
-
+└── README.md
 
 📈 Key Insights
 
-\- Churn Rate: ~20.4% of customers have churned.
+Churn Rate: ~20.4%
+Indicates a material retention risk typical of large retail banking portfolios.
 
-\- Behavioral Indicators: Lower transaction volume, reduced spend, and frequent support calls are strong churn predictors.
+Behavioral Drivers:
 
-\- Demographics: Age shows moderate churn variability; younger customers are slightly more volatile.
+Declining transaction count
 
-\- Digital Engagement: Login frequency correlates with retention.
+Reduced monthly spend
 
-🧹 Preprocessing Summary
+Increased support call frequency
 
-|  |  |  | 
+These signals consistently precede churn events.
 
-|  |  |  | 
+Demographic Trends:
+Age shows moderate variability; younger customers exhibit higher volatility, likely due to lower switching costs.
 
-|  |  |  | 
+Digital Engagement:
+Login frequency and online usage show strong negative correlation with churn, reinforcing the value of digital stickiness.
 
-|  |  |  | 
+🧹 Data Cleaning & Preprocessing Summary
+Step	Operation	Columns Affected	Rationale
+Missing Values	Median Imputation	MonthlySpend, NumTransactions	Robust against skewed banking data
+Categorical Encoding	One-Hot Encoding	AccountType, ServiceTier	Preserve non-ordinal semantics
+Outlier Treatment	IQR Capping	MonthlySpend, NumTransactions	Prevent model dominance by extreme values
+Feature Scaling	StandardScaler	All numeric features	Required for distance-based models
+Target Encoding	Binary Mapping	Churn	Model compatibility
+Train-Test Split	Stratified 80/20	All features	Maintain churn distribution
 
-|  |  |  | 
+Data Leakage Control:
+All preprocessing steps were fit only on the training set and applied to the test set via a scikit-learn Pipeline, ensuring zero leakage.
 
-|  |  |  | 
+🧠 Feature Groups
 
-|  |  |  | 
+Demographic: Age, Tenure, Region
 
+Behavioral: NumTransactions, MonthlySpend
 
+Service Interaction: SupportCalls, Complaints
 
+Digital Engagement: LoginFrequency, OnlineUsageScore
 
+This grouping supports both model interpretability and business storytelling.
 
 🧠 Model Readiness
 
-\- Fully numerical and standardized dataset
+Fully numerical, standardized dataset
 
-\- Suitable for tree-based and distance-based algorithms
+Compatible with:
 
-\- Class imbalance handled via SMOTE or class weights
+Logistic Regression (baseline, explainable)
 
-\- No data leakage detected
+Random Forest (non-linear interactions)
+
+XGBoost (performance-focused)
+
+Class imbalance addressed via:
+
+Class weights (primary)
+
+SMOTE (evaluated, not default)
+
+Designed for SHAP-based explainability, essential in regulated banking environments
+
+📊 Evaluation Strategy (Banking-Aligned)
+
+Metrics are selected based on business cost, not vanity accuracy:
+
+Primary: Recall (minimise false negatives → missed churners)
+
+Secondary: Precision (avoid unnecessary retention spend)
+
+Overall: F1-score, ROC-AUC
+
+In retail banking, failing to identify a churner has a higher financial impact than contacting a non-churner.
 
 🚀 Next Steps
 
-\- Feature selection and importance ranking
+Feature importance analysis (SHAP)
 
-\- Model training (Logistic Regression, Random Forest, XGBoost)
+Model comparison and selection
 
-\- Evaluation using precision, recall, F1-score, and ROC-AUC
+Threshold optimisation based on retention cost
 
-\- Deployment-ready pipeline (optional)
+Optional deployment pipeline using FastAPI + MLflow
 
 📎 References
 
-\- Internal reports and visualizations
+Lloyds Banking Group retail banking context
 
-\- Domain knowledge from banking churn studies
+Industry churn modelling best practices
 
-\- Python libraries: Pandas, Scikit-learn, Matplotlib, Seaborn
-
-
-
+Python stack: Pandas, Scikit-learn, Matplotlib, Seaborn
