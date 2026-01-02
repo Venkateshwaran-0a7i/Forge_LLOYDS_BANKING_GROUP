@@ -28,7 +28,7 @@ Forge_LLOYDS_BANKING_GROUP/
 │
 └── README.md                               # Project documentation
 
-
+
 📈 Key Insights
 - Churn Rate: ~20.4% of customers have churned.
 - Behavioral Indicators: Lower transaction volume, reduced spend, and frequent support calls are strong churn predictors.
@@ -58,6 +58,7 @@ Forge_LLOYDS_BANKING_GROUP/
 - Internal reports and visualizations
 - Domain knowledge from banking churn studies
 - Python libraries: Pandas, Scikit-learn, Matplotlib, Seaborn
+
 
 
 
