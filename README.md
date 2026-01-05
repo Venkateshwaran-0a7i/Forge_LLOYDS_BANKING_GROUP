@@ -1,135 +1,88 @@
-📊 Forge_LLOYDS_BANKING_GROUP
+# 🏦 Forge – Lloyds Banking Group Analytics Project
+### Customer Churn • Customer Segmentation • Product Performance
 
-Customer Churn Analysis & Prediction (Banking Use Case)
+This project focuses on applying **data analytics techniques** to a banking use case,
+specifically targeting **customer churn analysis, customer segmentation, and banking
+product performance analytics**.
 
-Overview
+The aim is to demonstrate how data can be used to support **customer retention,
+product strategy, and business decision-making** in a financial services environment.
 
-This project analyses and predicts customer churn for Lloyds Banking Group using structured customer data spanning demographics, transactional behaviour, service interactions, and digital engagement.
+---
 
-The objective is not just model accuracy, but to:
+## 🎯 Business Objectives
 
-Identify actionable churn signals
+- Identify patterns and indicators related to customer churn
+- Segment customers based on behavior and engagement
+- Analyze performance of banking products across segments
+- Generate actionable insights to support retention and product strategies
 
-Prepare regulation-safe, explainable features
+---
 
-Build a dataset ready for production-grade ML pipelines
+## 🛠️ Tools & Technologies
 
-This work aligns with retail banking risk and retention analytics, where explainability, robustness, and business cost awareness are critical.
+- **Python** (Pandas, NumPy, Scikit-learn)
+- **Exploratory Data Analysis (EDA)**
+- **Statistical Analysis**
+- **Data Cleaning & Preprocessing**
+- **Data Visualization** (Matplotlib / Seaborn)
+- **Excel / CSV-based data handling**
 
-🔍 Project Structure
-Forge_LLOYDS_BANKING_GROUP/
-│
-├── data/
-│   ├── Customer_Churn_Data_Large.xlsx
-│   ├── cleaned_customer_churn_data.csv
-│   └── cleaned_customer_churn_data.xlsx
-│
-├── reports/
-│   ├── Data_Cleaning_and_Preprocessing_Report.docx
-│   ├── Data_Cleaning_and_Preprocessing_Report_Extended.docx
-│   └── Customer_Churn_Analysis_Report.docx
-│
-├── visuals/
-│   ├── churn_distribution.png
-│   ├── age_dist_churn.png
-│   └── spend_vs_trans.png
-│
-├── notebooks/
-│   └── churn_model_dev.ipynb
-│
-└── README.md
+---
 
-📈 Key Insights
+## 📊 Key Analysis Areas
 
-Churn Rate: ~20.4%
-Indicates a material retention risk typical of large retail banking portfolios.
+### 1️⃣ Customer Churn Analysis
+- Explored churn trends and customer behavior patterns
+- Identified features associated with higher churn risk
+- Supported retention-focused insight generation
 
-Behavioral Drivers:
+### 2️⃣ Customer Segmentation
+- Grouped customers based on usage, engagement, and demographics
+- Compared behavior across segments
+- Highlighted high-risk and high-value customer groups
 
-Declining transaction count
+### 3️⃣ Banking Product Performance
+- Analyzed product usage across customer segments
+- Evaluated performance indicators linked to churn and engagement
+- Provided insights to support product optimization decisions
 
-Reduced monthly spend
+---
 
-Increased support call frequency
+## 📈 Insights & Outcomes
 
-These signals consistently precede churn events.
+- Improved understanding of churn drivers in banking data
+- Clear customer segments for targeted retention strategies
+- Visibility into product performance across different customer groups
+- Business-oriented insights aligned with banking operations
 
-Demographic Trends:
-Age shows moderate variability; younger customers exhibit higher volatility, likely due to lower switching costs.
+---
 
-Digital Engagement:
-Login frequency and online usage show strong negative correlation with churn, reinforcing the value of digital stickiness.
+## 🎯 What This Project Demonstrates
 
-🧹 Data Cleaning & Preprocessing Summary
-Step	Operation	Columns Affected	Rationale
-Missing Values	Median Imputation	MonthlySpend, NumTransactions	Robust against skewed banking data
-Categorical Encoding	One-Hot Encoding	AccountType, ServiceTier	Preserve non-ordinal semantics
-Outlier Treatment	IQR Capping	MonthlySpend, NumTransactions	Prevent model dominance by extreme values
-Feature Scaling	StandardScaler	All numeric features	Required for distance-based models
-Target Encoding	Binary Mapping	Churn	Model compatibility
-Train-Test Split	Stratified 80/20	All features	Maintain churn distribution
+- Practical banking analytics experience
+- Strong foundation in customer behavior analysis
+- Ability to work with structured financial datasets
+- Clear translation of data findings into business insights
+- End-to-end analytical thinking, from raw data to reporting
 
-Data Leakage Control:
-All preprocessing steps were fit only on the training set and applied to the test set via a scikit-learn Pipeline, ensuring zero leakage.
+---
 
-🧠 Feature Groups
+## 📂 Repository Contents
 
-Demographic: Age, Tenure, Region
+- Data cleaning and preprocessing scripts
+- Exploratory data analysis notebooks/scripts
+- Analytical reports and visual outputs
+- Supporting documentation
 
-Behavioral: NumTransactions, MonthlySpend
+---
 
-Service Interaction: SupportCalls, Complaints
+## 📫 Contact
 
-Digital Engagement: LoginFrequency, OnlineUsageScore
+- 📧 Email: venkateshwaran0720@gmail.com  
+- 🔗 LinkedIn: https://www.linkedin.com/in/venkateshwaran-mani-a3b2b23a3  
+- 🌐 Portfolio: https://venkateshwaran-0a7i.github.io/Venkateshwaran_Mani_Portfolio  
 
-This grouping supports both model interpretability and business storytelling.
+---
 
-🧠 Model Readiness
-
-Fully numerical, standardized dataset
-
-Compatible with:
-
-Logistic Regression (baseline, explainable)
-
-Random Forest (non-linear interactions)
-
-XGBoost (performance-focused)
-
-Class imbalance addressed via:
-
-Class weights (primary)
-
-SMOTE (evaluated, not default)
-
-Designed for SHAP-based explainability, essential in regulated banking environments
-
-📊 Evaluation Strategy (Banking-Aligned)
-
-Metrics are selected based on business cost, not vanity accuracy:
-
-Primary: Recall (minimise false negatives → missed churners)
-
-Secondary: Precision (avoid unnecessary retention spend)
-
-Overall: F1-score, ROC-AUC
-
-In retail banking, failing to identify a churner has a higher financial impact than contacting a non-churner.
-
-🚀 Next Steps
-
-Feature importance analysis (SHAP)
-
-Model comparison and selection
-
-Threshold optimisation based on retention cost
-
-Optional deployment pipeline using FastAPI + MLflow
-
-📎 References
-
-Lloyds Banking Group retail banking context
-
-Industry churn modelling best practices
-
-Python stack: Pandas, Scikit-learn, Matplotlib, Seaborn
+⭐ Feel free to explore the project and reach out for discussion or feedback.
