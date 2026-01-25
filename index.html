@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lloyds Banking Analytics | Venkateshwaran M</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #0a0e1a;
+            --bg-accent: #121826;
+            --primary: #FF007F; /* Vibrant Pink */
+            --primary-glow: rgba(255, 0, 127, 0.4);
+            --secondary: #FF9900; /* Energy Orange */
+            --secondary-glow: rgba(255, 153, 0, 0.3);
+            --tertiary: #3b82f6; /* Finance Blue */
+            --tertiary-glow: rgba(59, 130, 246, 0.3);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, var(--primary-glow) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, var(--secondary-glow) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--tertiary-glow) 0%, transparent 50%);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 20%, var(--primary) 60%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin: 0 auto 3rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-pink {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        .btn-pink:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 32px var(--primary-glow);
+        }
+
+        .btn-glass {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .stat-card .value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Feature Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 32px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+        }
+
+        .glass-card i {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .icon-pink { color: var(--primary); }
+        .icon-orange { color: var(--secondary); }
+        .icon-blue { color: var(--tertiary); }
+
+        .glass-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+        }
+
+        .glass-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Tech Tags */
+        .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .tech-pill {
+            background: var(--bg-accent);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .tech-pill:hover {
+            border-color: var(--tertiary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 6rem 0 3rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .footer-logo span { color: var(--primary); }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: 0.4s;
+        }
+
+        .social-link:hover {
+            color: var(--secondary);
+            transform: rotate(10deg) scale(1.2);
+        }
+
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            z-index: 100;
+        }
+
+        .ai-bubble {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ai-bubble:hover {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .grid { grid-template-columns: 1fr; }
+            .btn-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <h1>Banking Group <br>Analytics</h1>
+            <p>A sophisticated data science project focused on customer behavior, churn prediction, and product performance optimization for a leading financial institution.</p>
+            <div class="btn-group">
+                <a href="https://github.com/Venkateshwaran-0a7i/Forge_LLOYDS_BANKING_GROUP" target="_blank" class="btn btn-pink">
+                    <i class="fab fa-github"></i> Explorer Repo
+                </a>
+                <a href="https://www.linkedin.com/in/venkateshwaran-mani-a3b2b23a3" target="_blank" class="btn btn-glass">
+                    <i class="fab fa-linkedin"></i> Contact Lead
+                </a>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="value">95%</span>
+                <span class="label">Accuracy Focus</span>
+            </div>
+            <div class="stat-card">
+                <span class="value">Banking</span>
+                <span class="label">Industry Specific</span>
+            </div>
+            <div class="stat-card">
+                <span class="value">EDA+</span>
+                <span class="label">Advanced Modeling</span>
+            </div>
+        </div>
+
+        <!-- Analytical Pillars -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Analytical Pillars</h2>
+                <p>Translating raw financial data into strategic business intelligence.</p>
+            </div>
+            <div class="grid">
+                <div class="glass-card">
+                    <i class="fas fa-user-minus icon-pink"></i>
+                    <h3>Churn Analysis</h3>
+                    <p>Identifying high-risk behavior patterns and churn indicators to support proactive customer retention strategies.</p>
+                </div>
+                <div class="glass-card">
+                    <i class="fas fa-layer-group icon-orange"></i>
+                    <h3>Segmentation</h3>
+                    <p>Clustering customers based on engagement, usage, and demographics to personalize banking services.</p>
+                </div>
+                <div class="glass-card">
+                    <i class="fas fa-chart-pie icon-blue"></i>
+                    <h3>Product Insights</h3>
+                    <p>Evaluating the uptake and performance of banking products across various customer archetypes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Technology Stack</h2>
+                <div class="tech-container">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Pandas / NumPy</span>
+                    <span class="tech-pill">Scikit-learn</span>
+                    <span class="tech-pill">Matplotlib</span>
+                    <span class="tech-pill">Seaborn</span>
+                    <span class="tech-pill">Statistical EDA</span>
+                    <span class="tech-pill">Data Preprocessing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">FORGE<span>ANALYTICS</span></div>
+            <div class="social-links">
+                <a href="mailto:venkateshwaran0720@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/Venkateshwaran-0a7i" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/venkateshwaran-mani-a3b2b23a3" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">&copy; 2026 Venkateshwaran M • Financial Data Science</p>
+        </footer>
+    </main>
+
+    <!-- AI Assistant: L.U.C.Y -->
+    <div class="ai-assistant">
+        <div class="ai-bubble">
+            <i class="fas fa-microchip" style="font-size: 1.8rem; color: #fff;"></i>
+        </div>
+    </div>
+
+</body>
+</html>
